@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="icon" href="images/favicon-32x32.png" />
+		<title>Rock Paper Scissors</title>
+	</head>
+	<body>
+		<div class="container">
+			<header class="header">
+				<h1 class="title">ROCK PAPER SCISSORS</h1>
+			</header>
+			<main class="main">
+				<div class="scoreboard">
+					<h2 class="score-text-el">Choose your weapon</h2>
+					<h3 class="score-subtext-el">
+						First to score 5 points wins the game
+					</h3>
+					<div class="score-container">
+						<div class="score-box">
+							<div class="sign">❔</div>
+							<p class="score" id="score-player-el">Player: 0</p>
+						</div>
+						<div class="score-box">
+							<div class="sign">❔</div>
+							<p class="score" id="score-computer-el">Computer: 0</p>
+						</div>
+					</div>
+				</div>
+				<div class="choices">
+					<div class="btns">
+						<button class="rock-el">✊</button>
+						<button class="paper-el">✋</button>
+						<button class="scissors-el">✌</button>
+					</div>
+				</div>
+			</main>
+			<footer class="footer">
+				<p>
+					Copyright ©
+					<script>
+						document.write(new Date().getFullYear());
+					</script>
+					Jakub Nalewajk
+				</p>
+				<a href="https://github.com/jaqubowsky"
+					><i class="fab fa-github"></i
+				></a>
+			</footer>
+		</div>
+		<script src="index.js" defer></script>
+		<script
+			src="https://kit.fontawesome.com/2caf16760b.js"
+			crossorigin="anonymous"
+		></script>
+	</body>
+</html>
