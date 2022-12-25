@@ -18,17 +18,30 @@
 	box-sizing: border-box;
 }
 
-html {
-	position: relative;
-	min-height: 100vh;
-}
-
 body {
 	background-color: var(--primary-dark);
 	color: var(--primary-light);
 	font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
 		"Lucida Sans", Arial, sans-serif;
 	line-height: 1.6;
+	overflow: hidden;
+}
+
+button {
+	border: none;
+	outline: none;
+	cursor: pointer;
+	color: inherit;
+	font-family: inherit;
+	font-size: inherit;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
 }
 
 /* HEADER */
@@ -38,6 +51,7 @@ body {
 	justify-content: center;
 	padding: 40px 0;
 	background-color: var(--header);
+	width: 100%;
 }
 
 .title {
@@ -52,6 +66,7 @@ body {
 .main {
 	margin-top: 40px;
 	text-align: center;
+	flex: 1;
 }
 
 .scoreboard {
@@ -78,7 +93,58 @@ body {
 	font-weight: bold;
 }
 
+.btns {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 30px;
+}
+
+.btn {
+	width: 180px;
+	height: 180px;
+	font-size: 80px;
+	border-radius: 10px;
+	background-color: var(--secondary-dark);
+}
+
+.btn:hover {
+	background-color: var(--secondary-dark-hover);
+}
+
+.btn:active {
+	background-color: var(--secondary-dark-active);
+}
+
 .sign {
 	font-size: 80px;
 	margin-bottom: 10px;
+}
+
+/* FOOTER */
+
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	min-height: 50px;
+	width: 100%;
+	gap: 10px;
+	font-size: 20px;
+}
+
+.footer .fa-github:visited {
+	text-decoration: none;
+	color: inherit;
+	transition: all 1s ease-in-out;
+}
+
+.fa-github {
+	color: var(--primary-light);
+	font-size: 24px;
+	transition: transform 0.3s ease-in-out;
+}
+
+.fa-github:hover {
+	transform: rotate(360deg) scale(1.2);
 }
