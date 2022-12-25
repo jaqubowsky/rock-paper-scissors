@@ -1,19 +1,30 @@
-const choices = ["Rock", "Paper", "Scissors"];
+let playerScoreValue = 0;
+let computerScoreValue = 0;
 
-const playerChoice = "Scissors";
+const choices = ["Rock", "Paper", "Scissors"];
+const playerChoiceRock = document.querySelector(".rock-el");
+const playerChoicePaper = document.querySelector(".paper-el");
+const playerChoiceScissors = document.querySelector(".scissors-el");
+const playerScore = document.getElementById("score-player-el");
+const computerScore = document.getElementById("score-computer-el");
+const scoreSubtextEl = document.querySelector(".score-subtext-el");
 
 function getComputerChoice(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
 }
 
-function playRound(playerSelection, computerSelection) {
+function updateMessage(playerSelection, computerSelection) {
 	if (isWinning(playerSelection, computerSelection) === true) {
-		return `You win! ${playerSelection} beats ${computerSelection}`;
+		playerScoreValue += 1;
+		scoreSubtextEl.textContent = `You win! ${playerSelection} beats ${computerSelection}`;
 	} else if (isWinning(playerSelection, computerSelection) === false) {
-		return `You lose! ${computerSelection} beats ${playerSelection}`;
+		computerScoreValue += 1;
+		scoreSubtextEl.textContent = `You lose! ${computerSelection} beats ${playerSelection}`;
 	} else if (isWinning(playerSelection, computerSelection) === "tie") {
-		return "It's a tie!";
+		scoreSubtextEl.textContent = "It's a tie!";
 	}
+	playerScore.textContent = playerScoreValue;
+	computerScore.textContent = computerScoreValue;
 }
 
 function isWinning(playerSelection, computerSelection) {
@@ -34,19 +45,18 @@ function isWinning(playerSelection, computerSelection) {
 	}
 }
 
-function game() {
-	let playerScore = 0;
-	let computerScore = 0;
-	for (let i = 0; i < 5; i++) {
-		console.log(playRound(playerChoice, getComputerChoice(choices)));
-		if (isWinning(playerChoice, getComputerChoice(choices))) {
-			playerScore += 1;
-		} else {
-			computerScore += 1;
-		}
-		console.log(`Player score: ${playerScore}
-Computer score: ${computerScore}`);
-	}
+function game(playerSelection) {
+	updateMessage(playerSelection, getComputerChoice(choices));
 }
 
-game();
+playerChoiceRock.addEventListener("click", function () {
+	game("Rock");
+});
+
+playerChoiceScissors.addEventListener("click", function () {
+	game("Scissors");
+});
+
+playerChoicePaper.addEventListener("click", function () {
+	game("Paper");
+});
