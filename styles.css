@@ -165,4 +165,35 @@ button {
 	box-sizing: border-box;
 	padding: var(--gap);
 	background-color: rgba(0, 0, 0, 0.6);
+	display: none;
+}
+
+.modal__inner {
+	background-color: var(--primary-dark);
+	width: 100%;
+	max-width: 300px;
+	overflow: hidden;
+	border-radius: 8px;
+	height: 100%;
+	max-height: 200px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.modal__title {
+	padding: 0 var(--gap);
+	font-size: 40px;
+	margin-bottom: 30px;
+	font-weight: 800;
+}
+
+.modal__close.btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 140px;
+	height: 60px;
+	font-size: 25px;
 }
