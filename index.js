@@ -11,6 +11,9 @@ const scoreTextEl = document.querySelector(".score-text-el");
 const scoreSubtextEl = document.querySelector(".score-subtext-el");
 const playerSignIcon = document.querySelector(".playerIcon");
 const computerSignIcon = document.querySelector(".computerIcon");
+const modal = document.querySelector(".modal");
+const modalTitle = document.querySelector(".modal__title");
+const restartBtn = document.querySelector(".modal__close");
 
 function getComputerChoice(arr) {
 	return arr[Math.floor(Math.random() * arr.length)];
@@ -19,10 +22,16 @@ function getComputerChoice(arr) {
 function updateMessage(playerSelection, computerSelection) {
 	if (isWinning(playerSelection, computerSelection) === true) {
 		playerScoreValue += 1;
+		if (playerScoreValue === 5) {
+			openModal("You win!");
+		}
 		scoreSubtextEl.textContent = `${playerSelection} beats ${computerSelection}`;
 		scoreTextEl.textContent = "You win!";
 	} else if (isWinning(playerSelection, computerSelection) === false) {
 		computerScoreValue += 1;
+		if (computerScoreValue === 5) {
+			openModal("You lose...");
+		}
 		scoreSubtextEl.textContent = `${computerSelection} beats ${playerSelection}`;
 		scoreTextEl.textContent = "You lose!";
 	} else if (isWinning(playerSelection, computerSelection) === "tie") {
@@ -78,12 +87,25 @@ function updateScoreboard(playerSelection, computerSelection) {
 }
 
 function game(playerSelection, computerChoice) {
-	if (playerScoreValue >= 5 || computerScoreValue >= 5) {
-		return;
-	} else {
-		updateMessage(playerSelection, computerChoice);
-		updateScoreboard(playerSelection, computerChoice);
-	}
+	updateMessage(playerSelection, computerChoice);
+	updateScoreboard(playerSelection, computerChoice);
+}
+
+function restartGame() {
+	playerScoreValue = 0;
+	computerScoreValue = 0;
+	playerSignIcon.textContent = "❔";
+	computerSignIcon.textContent = "❔";
+	playerScore.textContent = 0;
+	computerScore.textContent = 0;
+	scoreTextEl.textContent = "Choose your weapon";
+	scoreSubtextEl.textContent = "First to score 5 points wins the game";
+	modal.style.display = "none";
+}
+
+function openModal(title) {
+	modalTitle.textContent = title;
+	modal.style.display = "flex";
 }
 
 playerChoiceRock.addEventListener("click", function () {
@@ -96,4 +118,8 @@ playerChoiceScissors.addEventListener("click", function () {
 
 playerChoicePaper.addEventListener("click", function () {
 	game("Paper", getComputerChoice(choices));
+});
+
+restartBtn.addEventListener("click", function () {
+	restartGame();
 });
